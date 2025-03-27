@@ -29,7 +29,7 @@ EOF
 variable "image_name" {
   description = "Name for the log server image"
   type        = string
-  default     = "logserver-by-terraform"
+  default     = "keycloak-by-terraform"
 }
 
 variable "image_url" {

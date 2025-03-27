@@ -2,9 +2,6 @@ locals {
   context = var.context
 }
 
-# main.tf
-
-# 创建镜像
 module "keycloak_image" {
   source = "git::https://github.com/terraform-zstack-modules/terraform-zstack-image.git"
 
