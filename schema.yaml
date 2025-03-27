@@ -1,10 +1,107 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template walrus-template-template
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
       type: object
+      properties:
+        image_name:
+          title: Image Name
+          type: string
+          description: Name for the log server image
+          default: logserver-by-terraform
+          x-walrus-ui:
+            group: Basic
+            order: 2
+        image_url:
+          title: Image Url
+          type: string
+          description: URL to download the image from
+          default: http://minio.zstack.io:9001/packer/keycloak-by-packer-image-compressed.qcow2
+          x-walrus-ui:
+            group: Basic
+            order: 3
+        backup_storage_name:
+          title: Backup Storage Name
+          type: string
+          description: Name of the backup storage to use
+          default: bs
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        instance_name:
+          title: Instance Name
+          type: string
+          description: Name for the log server instance
+          default: keyclock
+          x-walrus-ui:
+            group: Basic
+            order: 5
+        l3_network_name:
+          title: L3 Network Name
+          type: string
+          description: Name of the L3 network to use
+          default: test
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        instance_offering_name:
+          title: Instance Offering Name
+          type: string
+          description: Name of the instance offering to use
+          default: min
+          x-walrus-ui:
+            group: Basic
+            order: 7
+        ssh_user:
+          title: Ssh User
+          type: string
+          description: SSH username for remote access
+          default: root
+          x-walrus-ui:
+            group: Basic
+            order: 8
+        ssh_password:
+          title: Ssh Password
+          type: string
+          description: SSH password for remote access
+          default: password
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 9
+        admin_username:
+          title: Admin Username
+          type: string
+          description: keycloak username for admin
+          default: admin
+          x-walrus-ui:
+            group: Basic
+            order: 10
+        admin_password:
+          title: Admin Password
+          type: string
+          description: keycloak password
+          default: password
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 11
+        ports:
+          title: Ports
+          type: array
+          description: Service ports to expose
+          default:
+          - 8080
+          items:
+            type: number
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 12
       x-walrus-ui:
         groupOrder:
         - Basic

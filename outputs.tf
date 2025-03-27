@@ -32,11 +32,30 @@ output "walrus_resource_id" {
   description = "The id of resource where deployed in Walrus."
 }
 
-#
-# Submodule output
-#
+# output.tf
 
-output "submodule" {
-  value       = module.submodule.message
-  description = "The message from submodule."
+output "keycloak_url" {
+  value = "http://${module.keycloak_instance.instance_ips[0]}:8080"
+  description = "Keycloak 访问地址"
+}
+
+output "keycloak_admin_username" {
+  value = var.admin_username
+  description = "Keycloak 管理员用户名"
+}
+
+output "keycloak_admin_password" {
+  value = var.admin_password
+  sensitive = true
+  description = "Keycloak 管理员密码"
+}
+
+output "service_ip" {
+  description = "Service IP"
+  value       = module.logserver_instance.instance_ips[0]
+}
+
+output "ports" {
+  description = "Service Ports"
+  value       = var.ports
 }
