@@ -52,7 +52,7 @@ output "keycloak_admin_password" {
 
 output "service_ip" {
   description = "Service IP"
-  value       = module.logserver_instance.instance_ips[0]
+  value       = module.keycloak_instance.instance_ips[0]
 }
 
 output "ports" {
