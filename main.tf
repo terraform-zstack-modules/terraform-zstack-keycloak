@@ -3,7 +3,7 @@ locals {
 }
 
 module "keycloak_image" {
-  source = "git::https://github.com/terraform-zstack-modules/terraform-zstack-image.git"
+  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git"
 
   create_image        = true
   image_name          = var.image_name
@@ -18,7 +18,7 @@ module "keycloak_image" {
 
 # 创建虚拟机实例
 module "keycloak_instance" {
-  source = "git::https://github.com/chijiajian/terraform-zstack-instance.git"
+  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git"
 
   name                  = var.instance_name
   description           = "Created by Terraform devops"
