@@ -46,7 +46,6 @@ output "keycloak_admin_username" {
 
 output "keycloak_admin_password" {
   value = var.admin_password
-  sensitive = true
   description = "Keycloak 管理员密码"
 }
 
@@ -58,4 +57,8 @@ output "service_ip" {
 output "ports" {
   description = "Service Ports"
   value       = var.ports
+}
+
+output "endpoints" {
+  keycloal_console = "http://${module.keycloak_instance.instance_ips[0]}:8080"
 }

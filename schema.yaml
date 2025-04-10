@@ -59,6 +59,7 @@ components:
           type: string
           description: SSH username for remote access
           default: root
+          ReadOnly: true
           x-walrus-ui:
             group: Basic
             order: 8
@@ -68,7 +69,7 @@ components:
           description: SSH password for remote access
           default: password
           format: password
-          writeOnly: true
+          ReadOnly: true
           x-walrus-ui:
             group: Basic
             order: 9
@@ -77,6 +78,7 @@ components:
           type: string
           description: keycloak username for admin
           default: admin
+          ReadOnly: true
           x-walrus-ui:
             group: Basic
             order: 10
@@ -86,7 +88,7 @@ components:
           description: keycloak password
           default: password
           format: password
-          writeOnly: true
+          ReadOnly: true
           x-walrus-ui:
             group: Basic
             order: 11
@@ -95,6 +97,7 @@ components:
           type: array
           description: Service ports to expose
           default:
+          ReadOnly: true
           - 8080
           items:
             type: number
