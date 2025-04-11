@@ -93,3 +93,8 @@ variable "ports" {
   description = "Service ports to expose"
   default     = [8080]
 }
+
+variable "expunge" {
+  type  = bool
+  default = true
+}

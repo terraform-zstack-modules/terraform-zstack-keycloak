@@ -4,6 +4,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_zstack"></a> [zstack](#requirement\_zstack) | 1.0.5 |
 
 ## Providers
 
@@ -16,8 +17,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_keycloak_image"></a> [keycloak\_image](#module\_keycloak\_image) | git::https://github.com/terraform-zstack-modules/terraform-zstack-image.git | n/a |
-| <a name="module_keycloak_instance"></a> [keycloak\_instance](#module\_keycloak\_instance) | git::https://github.com/chijiajian/terraform-zstack-instance.git | n/a |
+| <a name="module_keycloak_image"></a> [keycloak\_image](#module\_keycloak\_image) | git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git | v1.1.1 |
+| <a name="module_keycloak_instance"></a> [keycloak\_instance](#module\_keycloak\_instance) | git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git | v1.1.1 |
 
 ## Resources
 
@@ -35,7 +36,8 @@
 | <a name="input_admin_username"></a> [admin\_username](#input\_admin\_username) | keycloak username for admin | `string` | `"admin"` | no |
 | <a name="input_backup_storage_name"></a> [backup\_storage\_name](#input\_backup\_storage\_name) | Name of the backup storage to use | `string` | `"bs"` | no |
 | <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br/><br/>Examples:<pre>context:<br/>  project:<br/>    name: string<br/>    id: string<br/>  environment:<br/>    name: string<br/>    id: string<br/>  resource:<br/>    name: string<br/>    id: string</pre> | `map(any)` | `{}` | no |
-| <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Name for the log server image | `string` | `"logserver-by-terraform"` | no |
+| <a name="input_expunge"></a> [expunge](#input\_expunge) | n/a | `bool` | `true` | no |
+| <a name="input_image_name"></a> [image\_name](#input\_image\_name) | Name for the log server image | `string` | `"keycloak-by-terraform"` | no |
 | <a name="input_image_url"></a> [image\_url](#input\_image\_url) | URL to download the image from | `string` | `"http://minio.zstack.io:9001/packer/keycloak-by-packer-image-compressed.qcow2"` | no |
 | <a name="input_instance_name"></a> [instance\_name](#input\_instance\_name) | Name for the log server instance | `string` | `"keyclock"` | no |
 | <a name="input_instance_offering_name"></a> [instance\_offering\_name](#input\_instance\_offering\_name) | Name of the instance offering to use | `string` | `"min"` | no |
@@ -48,6 +50,7 @@
 
 | Name | Description |
 |------|-------------|
+| <a name="output_endpoints"></a> [endpoints](#output\_endpoints) | n/a |
 | <a name="output_keycloak_admin_password"></a> [keycloak\_admin\_password](#output\_keycloak\_admin\_password) | Keycloak 管理员密码 |
 | <a name="output_keycloak_admin_username"></a> [keycloak\_admin\_username](#output\_keycloak\_admin\_username) | Keycloak 管理员用户名 |
 | <a name="output_keycloak_url"></a> [keycloak\_url](#output\_keycloak\_url) | Keycloak 访问地址 |
