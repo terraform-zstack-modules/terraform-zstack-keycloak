@@ -3,7 +3,7 @@ locals {
 }
 
 module "keycloak_image" {
-  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-image.git"
+  source = "git::https://github.com/terraform-zstack-modules/terraform-zstack-image.git"
 
   create_image        = true
   image_name          = var.image_name
@@ -12,13 +12,14 @@ module "keycloak_image" {
   platform           = "Linux"
   format             = "qcow2"
   architecture       = "x86_64"
+  expunge            = var.expunge
 
   backup_storage_name = var.backup_storage_name
 }
 
 # 创建虚拟机实例
 module "keycloak_instance" {
-  source = "git::http://172.20.14.17/jiajian.chi/terraform-zstack-instance.git"
+  source = "git::https://github.com/chijiajian/terraform-zstack-instance.git"
 
   name                  = var.instance_name
   description           = "Created by Terraform devops"
@@ -26,6 +27,7 @@ module "keycloak_instance" {
   image_uuid            = module.keycloak_image.image_uuid
   l3_network_name       = var.l3_network_name
   instance_offering_name = var.instance_offering_name
+  expunge               = var.expunge
 }
 
 # 生成 docker-compose 文件

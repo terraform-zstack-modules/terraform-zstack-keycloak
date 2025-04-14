@@ -7,15 +7,15 @@ components:
       type: object
       properties:
         image_name:
-          title: Image Name
+          title: 镜像名
           type: string
-          description: Name for the log server image
-          default: logserver-by-terraform
+          description: Name for the keycloak image
+          default: keycloak-by-terraform
           x-walrus-ui:
             group: Basic
             order: 2
         image_url:
-          title: Image Url
+          title: Keycloak 镜像 Url
           type: string
           description: URL to download the image from
           default: http://minio.zstack.io:9001/packer/keycloak-by-packer-image-compressed.qcow2
@@ -23,7 +23,7 @@ components:
             group: Basic
             order: 3
         backup_storage_name:
-          title: Backup Storage Name
+          title: 镜像服务器
           type: string
           description: Name of the backup storage to use
           default: bs
@@ -31,23 +31,23 @@ components:
             group: Basic
             order: 4
         instance_name:
-          title: Instance Name
+          title: 云主机名称
           type: string
-          description: Name for the log server instance
+          description: Name for the keycloak server instance
           default: keyclock
           x-walrus-ui:
             group: Basic
             order: 5
         l3_network_name:
-          title: L3 Network Name
+          title: 三层网络名称
           type: string
-          description: Name of the L3 network to use
+          description: 使用公有或编排网络，确保可以ssh访问
           default: test
           x-walrus-ui:
             group: Basic
             order: 6
         instance_offering_name:
-          title: Instance Offering Name
+          title: 计算规格名称
           type: string
           description: Name of the instance offering to use
           default: min
@@ -59,7 +59,7 @@ components:
           type: string
           description: SSH username for remote access
           default: root
-          ReadOnly: true
+          readOnly: true
           x-walrus-ui:
             group: Basic
             order: 8
@@ -68,27 +68,25 @@ components:
           type: string
           description: SSH password for remote access
           default: password
-          format: password
-          ReadOnly: true
+          readOnly: true
           x-walrus-ui:
             group: Basic
             order: 9
         admin_username:
-          title: Admin Username
+          title: keycloak管理员
           type: string
           description: keycloak username for admin
           default: admin
-          ReadOnly: true
+          readOnly: true
           x-walrus-ui:
             group: Basic
             order: 10
         admin_password:
-          title: Admin Password
+          title: 管理员密码
           type: string
           description: keycloak password
           default: password
-          format: password
-          ReadOnly: true
+          writeOnly: true
           x-walrus-ui:
             group: Basic
             order: 11
@@ -97,7 +95,6 @@ components:
           type: array
           description: Service ports to expose
           default:
-          ReadOnly: true
           - 8080
           items:
             type: number
@@ -105,6 +102,13 @@ components:
             colSpan: 12
             group: Basic
             order: 12
+        expunge:
+          title: 是否彻底删除
+          type: boolean
+          default: true
+          x-walrus-ui:
+            group: Basic
+            order: 13
       x-walrus-ui:
         groupOrder:
         - Basic

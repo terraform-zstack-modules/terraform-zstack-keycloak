@@ -60,5 +60,7 @@ output "ports" {
 }
 
 output "endpoints" {
-  keycloal_console = "http://${module.keycloak_instance.instance_ips[0]}:8080"
+  value = {
+    keycloal_endpoints = "http://${module.keycloak_instance.instance_ips[0]}:8080"
+  }
 }
